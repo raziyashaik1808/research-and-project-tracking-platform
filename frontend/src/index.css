@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-ink-950 text-white font-body antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-amber-500 hover:bg-amber-400 text-ink-950 font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 text-sm;
+  }
+
+  .btn-secondary {
+    @apply bg-ink-800 hover:bg-ink-700 text-white border border-ink-600 font-medium px-5 py-2.5 rounded-lg transition-all duration-200 text-sm;
+  }
+
+  .btn-danger {
+    @apply bg-red-600/20 hover:bg-red-600/40 text-red-400 border border-red-600/30 font-medium px-5 py-2.5 rounded-lg transition-all duration-200 text-sm;
+  }
+
+  .btn-success {
+    @apply bg-emerald-600/20 hover:bg-emerald-600/40 text-emerald-400 border border-emerald-600/30 font-medium px-5 py-2.5 rounded-lg transition-all duration-200 text-sm;
+  }
+
+  .card {
+    @apply bg-ink-900 border border-ink-700 rounded-xl p-6;
+  }
+
+  .input-field {
+    @apply bg-ink-800 border border-ink-600 text-white placeholder-ink-400 rounded-lg px-4 py-2.5 w-full focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30 transition-all duration-200 text-sm;
+  }
+
+  .label {
+    @apply text-ink-300 text-sm font-medium mb-1.5 block;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-ongoing {
+    @apply badge bg-blue-500/20 text-blue-300 border border-blue-500/30;
+  }
+
+  .badge-published {
+    @apply badge bg-emerald-500/20 text-emerald-300 border border-emerald-500/30;
+  }
+
+  .section-title {
+    @apply font-display text-2xl font-bold text-white;
+  }
+
+  .page-header {
+    @apply font-display text-3xl md:text-4xl font-bold text-white;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0f1c;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a3d6e;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5c60a0;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.4s ease forwards;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1c1e38 25%, #2b2e54 50%, #1c1e38 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
