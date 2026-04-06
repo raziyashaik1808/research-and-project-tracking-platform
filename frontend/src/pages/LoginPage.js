@@ -31,7 +31,7 @@ export default function LoginPage() {
   };
 
 const handleGoogleLogin = () => {
-  window.location.href = "https://research-and-project-tracking-platform-4y5ibwni3.vercel.app/";
+  window.location.href = "https://research-and-project-tracking-platform.onrender.com";
 };
   return (
     <div className="min-h-[calc(100vh-64px)] flex items-center justify-center px-4 py-12">
