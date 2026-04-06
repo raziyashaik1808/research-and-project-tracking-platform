@@ -30,11 +30,9 @@ export default function LoginPage() {
     }
   };
 
-  const handleGoogleLogin = () => {
-    console.log("Google button clicked");
-    window.location.href = "http://localhost:5000/auth/google";
-  };
-
+const handleGoogleLogin = () => {
+  window.location.href = "https://research-and-project-tracking-platform-4y5ibwni3.vercel.app/";
+};
   return (
     <div className="min-h-[calc(100vh-64px)] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md fade-up">
