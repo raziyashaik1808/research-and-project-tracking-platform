@@ -30,7 +30,7 @@ export default function HomePage() {
       if (dept !== 'All') params.department = dept;
       if (year !== 'All') params.year = year;
       const res = await api.get('/projects', { params });
-      setProjects(res.data);
+      setProjects(res.data.projects || []);
     } catch (err) {
       setError('Failed to load projects');
     } finally {
@@ -43,7 +43,7 @@ export default function HomePage() {
     // eslint-disable-next-line
   }, [dept, year]);
 
-  const filtered = projects.filter((p) =>
+  const filtered = (projects||[]).filter((p) =>
     p.title.toLowerCase().includes(search.toLowerCase()) ||
     p.description.toLowerCase().includes(search.toLowerCase())
   );
