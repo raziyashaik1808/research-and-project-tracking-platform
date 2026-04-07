@@ -15,7 +15,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://research-and-project-tracking-platform-sb8i-dyhsktugg.vercel.app"
+    "https://research-and-project-tracking-platf-rho.vercel.app"
   ],
   credentials: true,
 }));
