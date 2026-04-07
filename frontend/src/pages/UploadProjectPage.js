@@ -50,28 +50,43 @@ export default function UploadProjectPage() {
     handleFile(f);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.title || !form.description || !form.department) {
-      return setError('Please fill all required fields');
-    }
-    setLoading(true);
-    setError('');
-    try {
-      const formData = new FormData();
-      Object.entries(form).forEach(([k, v]) => formData.append(k, v));
-      if (file) formData.append('file', file);
+// ONLY showing the FIXED PART (handleSubmit)
 
-      const res = await api.post('/projects', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-      navigate(`/projects/${res.data._id}`);
-    } catch (err) {
-      setError(err.response?.data?.message || 'Failed to upload project');
-    } finally {
-      setLoading(false);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!form.title || !form.description || !form.department) {
+    return setError('Please fill all required fields');
+  }
+
+  setLoading(true);
+  setError('');
+
+  try {
+    const formData = new FormData();
+    Object.entries(form).forEach(([k, v]) => formData.append(k, v));
+    if (file) formData.append('file', file);
+
+    const res = await api.post('/projects', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+
+    // ✅ FIX HERE (IMPORTANT)
+    const projectId = res.data?.data?._id;
+
+    if (!projectId) {
+      throw new Error("Project ID not returned from server");
     }
-  };
+
+    navigate(`/projects/${projectId}`);
+
+  } catch (err) {
+    console.error(err);
+    setError(err.response?.data?.message || err.message || 'Failed to upload project');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
